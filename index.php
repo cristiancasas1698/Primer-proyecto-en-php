@@ -1,26 +1,11 @@
 <?php
+require_once ('jobs.php');
+
 //variables
-$var1 = 1;
 $name = 'Cristian Casas';
+$limitmoths = 80;
 
-//arreglos anidados
-$jobs = [
-  [
-    'title' => 'PHP developer',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-  ],
-  [
-    'title' => 'Python developer',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-  ],
-  [
-    'title' => 'Backend developer',
-    'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
-  ]
-];
-
-// var_dump($jobs);
-
+ 
 ?>
 <!doctype html>
 <html lang="en">
@@ -68,22 +53,20 @@ $jobs = [
           <h3 class="border-bottom-gray" >Work Experience</h3>
           <ul>
           <?php
-          //ciclos
+          /*********************** ciclos *******************/
 
-          $index = 0;
-            do {
-              echo '<li class="work-position">';
-              echo '<h5>'. $jobs[$index]['title'] .'</h5>';
-              echo '<p>'. $jobs[$index]['description'] .'</p>';
-              echo '<strong>Achievements:</strong>';
-              echo '<ul>';
-              echo  '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-              echo  '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-              echo  '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
-              echo '</ul>';
-              echo '</li>';
-              $index += 1;
-            } while ($index < 3);
+            $totalmoths = 0;
+            for($index = 0; $index < count($jobs); $index++){
+              $totalmoths += $jobs[$index]['months']; 
+
+              if ($totalmoths > $limitmoths) {
+                break;
+              }
+
+             
+              viewjobs($jobs[$index]);
+                                    
+            }
           ?>
           </ul>
         </div>
@@ -161,5 +144,6 @@ $jobs = [
   crossorigin="anonymous"></script>
 
 </body>
+
 
 </html>
