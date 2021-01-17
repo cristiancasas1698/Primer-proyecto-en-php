@@ -54,17 +54,14 @@ $limitmoths = 80;
           <ul>
           <?php
           /*********************** ciclos *******************/
-
             $totalmoths = 0;
             for($index = 0; $index < count($jobs); $index++){
-              $totalmoths += $jobs[$index]['months']; 
+              $totalmoths += $jobs[$index]->months; 
 
               if ($totalmoths > $limitmoths) {
                 break;
-              }
-
-             
-              viewjobs($jobs[$index]);
+              }  
+              printElement($jobs[$index]);
                                     
             }
           ?>
@@ -72,6 +69,16 @@ $limitmoths = 80;
         </div>
         <div>
             <h3 class="border-bottom-gray">Projects</h3>
+            <ul>
+          <?php
+          /*********************** ciclos *******************/
+            for($index = 0; $index < count($Proyects); $index++){
+        
+              printElement($Proyects[$index]);
+                                    
+            }
+          ?>
+          </ul>
             <div class="project">
                 <h5>Project X</h5>
                 <div class="row">

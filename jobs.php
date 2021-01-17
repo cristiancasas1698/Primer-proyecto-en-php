@@ -1,66 +1,42 @@
 <?php
 
+require 'app/Model/Job.php';
+require 'app/Model/Project.php';
+
+$jobs1 = new job('PHP developer','Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+$jobs1 -> months = 13;
+
+$jobs2 = new job('Python developer','Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+$jobs2 -> months = 12;
+
+$jobs3 = new job('Backend developer','Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+$jobs3 -> months = 15;
+
+$project1 = new Project('titulo 1','Lorem ipsum dolor sit amet, consectetur adipiscing elit');
+
+
 //arreglos anidados
 $jobs = [
-    [
-      'title' => 'PHP developer',
-      'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      'visible' => true,
-      'months' => 13
-    ],
-    [
-      'title' => 'Python developer',
-      'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      'visible' => true,
-      'months' => 12
-    ],
-    [
-      'title' => 'Backend developer',
-      'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      'visible' => true,
-      'months' => 15
-    ],
-    [
-      'title' => 'Node developer',
-      'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      'visible' => true,
-      'months' => 6
-    ],
-    [
-      'title' => 'Frontend developer',
-      'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-      'visible' => false,
-      'months' => 3
-    ]
+    $jobs1,
+    $jobs2,
+    $jobs3
   ];
 
-  // funcion para verificar los años/meses de experiencia
-function getDuration($moths){
-    $years = floor($moths / 12);
-    $extramoths = $moths % 12;
+$Proyects = [
+  $project1
+];
+
   
-    if ($years != 0 && $extramoths !=0) {
-      return "$years years $extramoths moths";
+   function printElement($jobs) {
   
-    }elseif($years != 0 && $extramoths == 0){
-      return "$years years";
-  
-    }elseif ($years == 0 && $extramoths != 0) {
-      return "$extramoths moths";
-    }
-  
-  }
-  
-   function viewjobs($jobs) {
-  
-    if ($jobs['visible'] == false) {
+    if ($jobs->visible == false) {
       return;
    }
-  
+
     echo '<li class="work-position">'; 
-    echo '<h5>'. $jobs['title'] .'</h5>';
-    echo '<p>'. $jobs['description'] .'</p>';
-    echo '<p> experience: '. getDuration($jobs['months']) .'</p>';
+    echo '<h5>'. $jobs->getTitle() .'</h5>';
+    echo '<p>'. $jobs->description .'</p>';
+    echo '<p> experience: '. $jobs->getDurationAsString() .'</p>';
     echo '<strong>Achievements:</strong>';
     echo '<ul>';
     echo  '<li>Lorem ipsum dolor sit amet, 80% consectetuer adipiscing elit.</li>';
