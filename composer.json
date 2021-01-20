@@ -4,5 +4,7 @@
             "app\\":"app\\"
         }
     },
-    "require": {}
+    "require": {
+        "illuminate/database": "^7.30"
+    }
 }

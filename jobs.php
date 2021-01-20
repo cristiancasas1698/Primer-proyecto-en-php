@@ -1,13 +1,9 @@
 <?php
 
+require_once 'vendor\autoload.php';
+
 //namespace
-require 'library1/Project.php';
-use App\Model\{Job,project,Printable};
-
-require 'app/Model/Job.php';
-require 'app/Model/Project.php';
-require_once 'app/Model/Printable.php';
-
+use app\Model\{Project,Printable,Job};
 
 $jobs1 = new job('PHP developer','Lorem ipsum dolor sit amet, consectetur adipiscing elit');
 $jobs1 -> months = 13;
