@@ -1,43 +1,27 @@
 <?php
 
-require_once 'vendor\autoload.php';
-
 //namespace
-use app\Model\{Project,Printable,Job};
-
-$jobs1 = new job('PHP developer','Lorem ipsum dolor sit amet, consectetur adipiscing elit');
-$jobs1 -> months = 13;
-
-$jobs2 = new job('Python developer','Lorem ipsum dolor sit amet, consectetur adipiscing elit');
-$jobs2 -> months = 12;
-
-$jobs3 = new job('Backend developer','Lorem ipsum dolor sit amet, consectetur adipiscing elit');
-$jobs3 -> months = 15;
+use app\Model\{Project,Job};
 
 $project1 = new Project('titulo 1','Lorem ipsum dolor sit amet, consectetur adipiscing elit');
 
+$jobs = Job::all();
+
 
 //arreglos anidados
-$jobs = [
-    $jobs1,
-    $jobs2,
-    $jobs3
-  ];
-
 $Proyects = [
   $project1
 ];
-
   
-   function printElement(printable $jobs) {
+   function printElement( $jobs) {
   
-    if ($jobs->visible == false) {
-      return;
-   }
+  //   if ($jobs->visible == false) {
+  //     return;
+  //  }
 
     echo '<li class="work-position">'; 
-    echo '<h5>'. $jobs->getTitle() .'</h5>';
-    echo '<p>'. $jobs->getDescription() .'</p>';
+    echo '<h5>'. $jobs->title .'</h5>';
+    echo '<p>'. $jobs->description .'</p>';
     echo '<p> experience: '. $jobs->getDurationAsString() .'</p>';
     echo '<strong>Achievements:</strong>';
     echo '<ul>';

@@ -3,7 +3,7 @@ namespace app\Model;
 require_once 'Printable.php';
 
 class BaseElement implements Printable{
-    protected $title;
+    public $title;
     public $description;
     public $visible = true;
     public $months;
